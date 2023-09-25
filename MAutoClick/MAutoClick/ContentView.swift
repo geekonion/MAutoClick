@@ -78,7 +78,7 @@ struct ContentView: View {
     // 선택하는 동작
     @State var actionClick: Bool = false
     // Auto Location Input Mode
-    @State private var isAutoLocationInput: Bool = false
+    @State private var isAutoLocationInput: Bool = true
     // loop Mode
     @State var isLoopMode: Bool = false
     // 멈춤 신호
@@ -675,6 +675,7 @@ extension ContentView {
         }
         .frame(minHeight: 0, maxHeight: .infinity)
         .disabled(self.isStarted)
+        .padding(.leading, 8)
     }
     
     // 동작 Cell

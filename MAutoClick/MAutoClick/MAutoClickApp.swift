@@ -14,7 +14,7 @@ struct MAutoClickApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .frame(width: 700, height: 400)
+                .frame(width: 700, height: 500, alignment: .top)
         }
         .windowResizabilityContentSize()
     }
