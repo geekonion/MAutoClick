@@ -124,7 +124,7 @@ struct ContentView: View {
                     self.rightSideView()
                         .frame(width: 190)
                 }
-                .frame(height: 230)
+                .frame(height: 245)
                 
                 Divider()
                 
@@ -134,7 +134,7 @@ struct ContentView: View {
             }
             
         }
-        .frame(width: 700, height: 420)
+        .frame(width: 700)
         .onAppear(perform: {
             // Kelvin
             self.loadUserTaskList()
@@ -248,19 +248,19 @@ extension ContentView {
                     }
                 }
                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                .padding(.leading, 8)
+                .padding(.leading, 10)
                 .disabled(self.isStarted)
                 .keyboardShortcut("p", modifiers: [.command, .shift])
             
             Toggle("Loop Mode", isOn: $isLoopMode)
                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                .padding(.leading, 8)
+                .padding(.leading, 10)
                 .disabled(self.isStarted)
                 .keyboardShortcut("l", modifiers: [.command, .shift])
             
             Toggle("Auto Start", isOn: $autoStart)
                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                .padding(.leading, 8)
+                .padding(.leading, 10)
             
             Spacer()
             
@@ -269,7 +269,7 @@ extension ContentView {
             
             HStack {
                 Text("State")
-                    .padding(.leading, 8)
+                    .padding(.leading, 10)
                 
                 
                 if self.isStarted {
@@ -290,7 +290,7 @@ extension ContentView {
             
             HStack {
                 Text("Repeat")
-                    .padding(.leading, 8)
+                    .padding(.leading, 10)
                     
                 
                 if self.isLoopMode {
@@ -536,7 +536,7 @@ extension ContentView {
         
         HStack {
             TextField("Delay", value: $inputDelay, format: .number)
-                .padding(.leading, 8)
+                .padding(.leading, 10)
                 .textFieldStyle(.roundedBorder)
                 .disabled(self.isStarted)
 
@@ -571,7 +571,7 @@ extension ContentView {
             TextField("Repeat", value: $inputRepeat, format: .number)
                 .multilineTextAlignment(.center)
                 .textFieldStyle(.roundedBorder)
-                .padding(.leading, 8)
+                .padding(.leading, 10)
                 .padding(.trailing, 8)
                 .padding(.top, 5)
                 .padding(.bottom, 5)
@@ -627,6 +627,7 @@ extension ContentView {
                     }
                 }
                 .frame(minWidth: 0, maxWidth: .infinity)
+                .frame(height: 280)
             }
             
             
@@ -684,7 +685,7 @@ extension ContentView {
         }
         .frame(minHeight: 0, maxHeight: .infinity)
         .disabled(self.isStarted)
-        .padding(.leading, 8)
+        .padding(.leading, 10)
     }
     
     // 동작 Cell
