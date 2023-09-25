@@ -81,6 +81,8 @@ struct ContentView: View {
     @State private var isAutoLocationInput: Bool = true
     // loop Mode
     @State var isLoopMode: Bool = false
+    // auto start after launch
+    @State var autoStart: Bool = false
     // 멈춤 신호
     @State var stopSignal: Bool = false
     // 실행 중인지 확인하는 신호
@@ -199,14 +201,17 @@ struct ContentView: View {
                 
                 return $0
             }
+            if autoStart {
+                automation()
+            }
         })
-        
-        
-        
     }
-    
-    
-    
+}
+
+extension ContentView {
+    func automation() {
+        runMAutoClick()
+    }
 }
 
 //MARK: - 3 마디 부분
@@ -252,6 +257,10 @@ extension ContentView {
                 .padding(.leading, 8)
                 .disabled(self.isStarted)
                 .keyboardShortcut("l", modifiers: [.command, .shift])
+            
+            Toggle("Auto Start", isOn: $autoStart)
+                .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                .padding(.leading, 8)
             
             Spacer()
             
@@ -883,6 +892,8 @@ extension ContentView {
                 
             }
         }
+        
+        self.autoStart = user.bool(forKey: "autoStartAfterLaunch")
     }
     
     //MARK: - Kelvin
@@ -891,6 +902,8 @@ extension ContentView {
             let list = try JSONEncoder().encode(self.userTaskList)
             let user = UserDefaults.standard
             user.set(list, forKey: "userTaskList")
+            
+            user.set(autoStart, forKey: "autoStartAfterLaunch")
         } catch {
             
         }
